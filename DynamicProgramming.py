@@ -21,3 +21,4 @@ def maximum_donation_amount(donation):
 enter_donation_values = input()
 maximum_amount = maximum_donation_amount(enter_donation_values)
 print(maximum_amount)
+print ('i should stop talking in lectures')
