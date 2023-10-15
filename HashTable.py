@@ -44,5 +44,6 @@ t.insert('206050', 'Nuwanga')
 result = t.search('206014')
 if result is False:
     print("Key not Found")
+    print("Try Again")
 else:
     print(result)
