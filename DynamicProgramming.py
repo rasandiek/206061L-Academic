@@ -1,50 +1,23 @@
-class Pair:
-    def __init__(self, k, val):
-        self.key = k
-        self.value = val
+def maximum_donation_amount(donation):
+    d_list = list(map(int, donation.split()))
 
+    n = len(d_list)
 
-# Creating the HashTable class
-class HashTable:
-    def __init__(self, size):
-        self.size = size
-        self.table = [None] * size
+    if n == 0:
+        return 0
+    elif n == 1:
+        return d_list[0]
 
-    # Creating the insert/ add function
-    def insert(self, k, val):
-        h = hash(k)
-        p = h % self.size
+    maximum_amount_with_currentval = d_list[0]
+    maximum_amount_without_currentval = 0
 
-        if self.table[p] is None:
-            self.table[p] = (k, val)
-        else:
-            pass
+    for i in range(1,n):
+        new_maximum_amount_with_currentval = max(maximum_amount_without_currentval + d_list[i], maximum_amount_with_currentval)
+        maximum_amount_without_currentval = maximum_amount_with_currentval
+        maximum_amount_with_currentval = new_maximum_amount_with_currentval
 
-    # Creating the search function
-    def search(self, k):
-        h = hash(k)
-        p = h % self.size
+    return max(maximum_amount_with_currentval, maximum_amount_without_currentval)
 
-        if self.table[p] is None:
-            return False
-        elif self.table[p][0] == k:
-            return self.table[p][1]
-
-        else:
-            return False
-
-
-t = HashTable(20)
-t.insert('206061', 'Rasandie')
-t.insert('206014', 'Radeesh')
-t.insert('206123', 'Pabodini')
-t.insert('206088', 'Vihanga')
-t.insert('206050', 'Nuwanga')
-
-result = t.search('206014')
-if result is False:
-    print("Key not Found")
-    print("Try Again")
-    print("On Repeat")
-else:
-    print(result)
+enter_donation_values = input()
+maximum_amount = maximum_donation_amount(enter_donation_values)
+print(maximum_amount)
