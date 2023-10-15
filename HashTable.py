@@ -45,6 +45,6 @@ result = t.search('206014')
 if result is False:
     print("Key not Found")
     print("Try Again")
-    print("Repeat")
+    print("On Repeat")
 else:
     print(result)
